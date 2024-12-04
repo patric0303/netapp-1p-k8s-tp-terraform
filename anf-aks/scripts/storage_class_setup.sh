@@ -33,11 +33,14 @@ spec:
   subscriptionID: ${sp_creds_subscription}
   tenantID: ${sp_creds_tenant}
   location: ${azr_region}
+  nfsMountOptions: nfsvers=4
   serviceLevel: ${anf_service_level}
   capacityPools:
   - "${anf_capacity_pool}"
   credentials:
     name: backend-tbc-anf-secret
+  defaults:
+    snapshotDir: "true"
   virtualNetwork: ${aks_network_name}
   subnet: ${aks_subnet_name}
 EOF

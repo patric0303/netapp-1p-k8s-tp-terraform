@@ -49,7 +49,11 @@ variable "aks_kubernetes_version" {
 }
 variable "aks_trident_version" {
   type        = string
-  description = "The trident version to use for the output commands"
+  description = "The Trident version to use for the output commands"
+}
+variable "aks_trident_protect_version" {
+  type        = string
+  description = "The Trident protect version to use for the output commands"
 }
 
 # Node Pool Settings

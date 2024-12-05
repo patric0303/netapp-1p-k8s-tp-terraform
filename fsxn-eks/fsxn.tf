@@ -53,16 +53,20 @@ resource "aws_secretsmanager_secret_version" "svm_password" {
 resource "aws_fsx_ontap_file_system" "eksfs" {
   storage_capacity    = var.fsxn_storage_capacity
   subnet_ids          = aws_subnet.eks_private[*].id
-  deployment_type     = "MULTI_AZ_1"
+  deployment_type     = "MULTI_AZ_2"
   throughput_capacity = var.fsxn_throughput_capacity
   preferred_subnet_id = aws_subnet.eks_private[0].id
   security_group_ids  = [aws_security_group.fsxn_sg.id]
   fsx_admin_password  = random_string.fsx_password.result
   route_table_ids     = [aws_vpc.eks_vpc.default_route_table_id]
-  disk_iops_configuration {
-    mode = var.fsxn_disk_iops_mode
-    iops = var.fsxn_user_provisioned_disk_iops
+  dynamic disk_iops_configuration {
+    for_each = var.fsxn_disk_iops_mode == "USER_PROVISIONED" ? [1] : []
+    content {
+      mode = var.fsxn_disk_iops_mode
+      iops = var.fsxn_user_provisioned_disk_iops
+    }
   }
+
   tags = {
     Env     = "eks-${terraform.workspace}",
     Name    = "eks-${terraform.workspace}-fsxn"

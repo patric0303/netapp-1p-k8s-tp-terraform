@@ -13,9 +13,13 @@ aks_services_dns_ip = "172.16.0.10"   # must be w/in services
 aks_pods_cidr       = "172.18.0.0/16" # must not be w/in vnet
 
 # AKS Cluster Settings
-aks_kubernetes_version       = "1.29.7"
-aks_trident_version          = "24.06.1"
-aks_trident_protect_version  = "100.2410.0"
+aks_kubernetes_version          = "1.29.7"
+aks_trident_version             = "24.06.1"
+aks_trident_protect_version     = "100.2410.0"
+azure_storage_account           = "<ACCOUNT>"
+azure_storage_account_key       = "<KEY>"
+azure_storage_account_container	= "<CONTAINER>"
+
 
 # Node Pool Settings
 aks_node_count = 2

@@ -203,3 +203,25 @@ resource "terraform_data" "storage-class-setup" {
     }
   }
 }
+
+# Trident protect Installation
+resource "terraform_data" "trident-protect-install" {
+  depends_on = [aws_eks_addon.addons]
+  triggers_replace = [
+    aws_eks_cluster.eks_cluster.arn,
+    terraform_data.storage-class-setup
+  ]
+  provisioner "local-exec" {
+    command = "/bin/bash ./scripts/trident_protect_setup.sh"
+    environment = {
+      aws_region         = var.aws_region
+      eks_cluster_name   = aws_eks_cluster.eks_cluster.name
+      eks_lb_arn         = aws_iam_role.eks_lb.arn
+      eks_svm_ip         = join("", aws_fsx_ontap_file_system.eksfs.endpoints[0].management[0].ip_addresses)
+      eks_svm_name       = aws_fsx_ontap_storage_virtual_machine.ekssvm.name
+      fsx_filesystem_id  = aws_fsx_ontap_file_system.eksfs.id
+      svm_password       = aws_secretsmanager_secret.svm_password.arn
+      vscrd_release      = var.vscrd_release
+    }
+  }
+}

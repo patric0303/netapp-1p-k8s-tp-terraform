@@ -16,6 +16,28 @@ variable "creator_tag" {
   description = "The value to apply to the 'creator' key tag"
 }
 
+# Trident protect Settings
+#variable "aws_s3_bucket" {
+#  type        = string
+#  description = "S3 bucket name for Trident protect AppVault"
+#} 
+#variable s3_access_key_id {
+#  type        = string
+#  description = "AWS S3 Access Key ID"
+#}
+#variable s3_secret_access_key {
+#  type        = string
+#  description = "AWS S3 Secret Key"
+#}
+#variable aws_cluster_name {
+#  type        = string
+#  description = "AWS EKS cluster name"
+#}
+variable aws_trident_protect_version {
+  type        = string
+  description = "Trident protect version"
+}
+
 # VPC Settings
 variable "eks_vpc_cidr" {
   type        = string

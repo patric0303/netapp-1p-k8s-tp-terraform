@@ -203,3 +203,19 @@ resource "terraform_data" "storage-class-setup" {
     }
   }
 }
+
+# Trident protect Installation
+resource "terraform_data" "trident-protect-install" {
+  depends_on = [aws_eks_addon.addons]
+  triggers_replace = [
+    aws_eks_cluster.eks_cluster.arn,
+    terraform_data.storage-class-setup
+  ]
+  provisioner "local-exec" {
+    command = "/bin/bash ./scripts/trident_protect_setup.sh"
+    environment = {
+      eks_cluster_name            = aws_eks_cluster.eks_cluster.name
+      aws_trident_protect_version = var.aws_trident_protect_version
+    }
+  }
+}

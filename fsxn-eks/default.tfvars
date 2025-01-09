@@ -1,8 +1,15 @@
 # AWS Settings
-aws_region               = "us-east-2"
-aws_cred_file            = "~/.aws/aws-terraform.json"
+aws_region               = "us-east-1"
+aws_cred_file            = "~/.aws/Trident-protectDemoUser-credential-terraform.json"
 availability_zones_count = 2
-creator_tag              = "mhaigh"
+creator_tag              = "patricu"
+
+# Trident protect Settings
+# aws_s3_bucket               = "pu-tp-demo"
+# s3_access_key_id            = "KEY"
+# s3_secret_access_key        = "KEY"
+# aws_cluster_name            = "${terraform.workspace}"
+aws_trident_protect_version = "100.2410.1"
 
 # VPC Settings
 eks_vpc_cidr             = "10.30.0.0/16"
@@ -28,19 +35,27 @@ eks_addons             = [
 
 # FSxN Settings
 fsxn_storage_capacity           = 2048
-fsxn_throughput_capacity        = 512
+fsxn_throughput_capacity        = 384
 fsxn_disk_iops_mode             = "AUTOMATIC"
 fsxn_user_provisioned_disk_iops = null
 
 # Authorized Networks
 authorized_networks = [
   {
-    cidr_block   = "198.51.100.0/24"
-    display_name = "company_range"
+    cidr_block   = "84.185.54.152/32"
+    display_name = "home_address"
   },
   {
-    cidr_block   = "203.0.113.30/32"
-    display_name = "home_address"
+    cidr_block   = "217.70.208.0/20"
+    display_name = "emea_vpn"
+  },
+  {
+    cidr_block   = "185.35.244.0/22"
+    display_name = "us-east_vpn"
+  },
+{
+    cidr_block   = "79.220.181.0/24"
+    display_name = "sto"
   },
 ]
 

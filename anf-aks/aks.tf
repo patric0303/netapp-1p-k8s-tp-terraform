@@ -60,3 +60,20 @@ resource "terraform_data" "trident-install" {
     }
   }
 }
+
+resource "terraform_data" "trident-protect-install" {
+  triggers_replace = [
+    azurerm_kubernetes_cluster.aks_cluster.id,
+    terraform_data.trident-install
+  ]
+  provisioner "local-exec" {
+    command = "/bin/bash ./scripts/trident_protect_setup.sh"
+    environment = {
+      aks_cluster_name                 = azurerm_kubernetes_cluster.aks_cluster.name
+      aks_trident_protect_version      = var.aks_trident_protect_version
+      azure_storage_account            = var.azure_storage_account
+      azure_storage_account_key        = var.azure_storage_account_key
+      azure_storage_account_container  = var.azure_storage_account_container
+    }
+  }
+}

@@ -49,7 +49,23 @@ variable "aks_kubernetes_version" {
 }
 variable "aks_trident_version" {
   type        = string
-  description = "The trident version to use for the output commands"
+  description = "The Trident version to use for the output commands"
+}
+variable "aks_trident_protect_version" {
+  type        = string
+  description = "The Trident protect version to use for the output commands"
+}
+variable "azure_storage_account" {
+  type        = string
+  description = "The Azure Storage account to use for the output commands"
+}
+variable "azure_storage_account_key" {
+  type        = string
+  description = "The Azure Storage account key to use for the output commands"
+}
+variable "azure_storage_account_container" {
+  type        = string
+  description = "The Azure Storage account container to use for the output commands"
 }
 
 # Node Pool Settings

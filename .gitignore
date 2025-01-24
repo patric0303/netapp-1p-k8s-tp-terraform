@@ -36,3 +36,6 @@ terraform.rc
 # Ignore swap files
 *.swp
 *.swo
+
+# Ignore patric's defaults
+default_patric.tfvars

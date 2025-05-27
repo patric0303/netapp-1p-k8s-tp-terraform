@@ -18,6 +18,9 @@ gke_kubernetes_version = "1.32.3-gke.1927009"
 gke_trident_version    = "25.02.1"
 gke_private_cluster    = true
 
+# Trident protect Settings
+gke_trident_protect_version = "100.2502.0"
+
 # Node Pool Settings
 gke_machine_type       = "e2-medium"
 gke_image_type         = "COS_CONTAINERD"

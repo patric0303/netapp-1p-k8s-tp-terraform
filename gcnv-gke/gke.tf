@@ -85,3 +85,16 @@ resource "terraform_data" "trident-install" {
     }
   }
 }
+
+resource "terraform_data" "trident-protect-install" {
+  triggers_replace = [
+    module.gke.cluster_id
+  ]
+  provisioner "local-exec" {
+    command = "/bin/bash ./scripts/trident_protect_setup.sh"
+    environment = {
+      gke_cluster_name              = module.gke.name
+      gke_trident_protect_version   = var.gke_trident_protect_version
+    }
+  }
+}

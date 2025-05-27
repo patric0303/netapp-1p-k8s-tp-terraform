@@ -90,7 +90,7 @@ EOF
 # Get Kubeconfig #
 ##################
 echo "--> getting cluster kubeconfig via gcloud"
-gcloud container clusters get-credentials ${gke_name} --region ${gke_zone}
+gcloud container clusters get-credentials ${gke_name} --region ${gke_zone} --project ${gcp_project}
 
 ###################
 # Install Trident #

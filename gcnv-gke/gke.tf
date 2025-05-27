@@ -67,6 +67,7 @@ resource "terraform_data" "trident-install" {
       gcnv_service_level       = var.gcnv_service_level
       gcnv_storage_pool        = google_netapp_storage_pool.gcnv_pool.name
       gcp_project_number       = var.gcp_project_number
+      gcp_project              = var.gcp_project
       gcp_region               = var.gcp_region
       gke_name                 = module.gke.name
       gke_zone                 = var.gcp_zones[0]

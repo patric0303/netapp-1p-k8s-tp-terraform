@@ -11,34 +11,6 @@ install_trident_protect() {
 	helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=${eks_cluster_name} --version ${aws_trident_protect_version} --create-namespace --namespace trident-protect
 }
 
-create_appvault_cr() {
-        echo "    --> creating appVault secret"
-        kubectl -n trident-protect create secret generic ${aws_s3_bucket} --from-literal=accessKeyID=${s3_access_key_id} --from-literal=secretAccessKey=${s3_secret_access_key}
-        echo "    --> creating appVault CR"
-        kubectl apply -f - <<EOF
-apiVersion: protect.trident.netapp.io/v1
-kind: AppVault
-metadata:
-  name: ${aws_s3_bucket}
-  namespace: trident-protect
-spec:
-  providerConfig:
-    s3:
-      bucketName: ${aws_s3_bucket}
-      endpoint: s3.example.com
-  providerCredentials:
-    accessKeyID:
-      valueFromSecret:
-        key: accessKeyID
-        name: ${aws_s3_bucket}
-    secretAccessKey:
-      valueFromSecret:
-        key: secretAccessKey
-        name: ${aws_s3_bucket}
-  providerType: AWS
-EOF
-}
-
 ##################
 # Get Kubeconfig #
 ##################
@@ -60,8 +32,3 @@ else
         echo "--> sleeping for 1 minute for Trident protect pods to start up"
         sleep 60
 fi
-
-###########################
-# Create appVault CR      #
-###########################
-# create_appvault_cr

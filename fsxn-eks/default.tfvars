@@ -5,10 +5,6 @@ availability_zones_count = 2
 creator_tag              = "patricu"
 
 # Trident protect Settings
-# aws_s3_bucket               = "pu-tp-demo"
-# s3_access_key_id            = "KEY"
-# s3_secret_access_key        = "KEY"
-# aws_cluster_name            = "${terraform.workspace}"
 aws_trident_protect_version = "100.2410.1"
 
 # VPC Settings

@@ -53,6 +53,12 @@ variable "eks_node_max" {
   type        = number
   description = "The maximum number of nodes in the node pool"
 }
+
+variable "eks_node_volume_size" {
+  type        = number
+  description = "The size of the EBS volume for each node in the node pool"
+}
+ 
 variable "eks_instance_type" {
   type        = string
   description = "The EC2 instance size/type"

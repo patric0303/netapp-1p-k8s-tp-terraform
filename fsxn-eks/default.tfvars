@@ -17,6 +17,7 @@ eks_kubernetes_version = "1.29"
 eks_node_count         = 2
 eks_node_min           = 2
 eks_node_max           = 5
+eks_node_volume_size   = 50
 eks_instance_type      = "t2.medium"
 eks_addons             = [
   {
@@ -30,7 +31,7 @@ eks_addons             = [
 ]
 
 # FSxN Settings
-fsxn_storage_capacity           = 2048
+fsxn_storage_capacity           = 5120
 fsxn_throughput_capacity        = 384
 fsxn_disk_iops_mode             = "AUTOMATIC"
 fsxn_user_provisioned_disk_iops = null

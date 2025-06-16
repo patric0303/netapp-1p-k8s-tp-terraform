@@ -99,6 +99,14 @@ resource "aws_eks_node_group" "eks_ng" {
 resource "aws_launch_template" "eks_ng_lt" {
   name = "${terraform.workspace}-launch-template"
   user_data = data.cloudinit_config.cloudinit.rendered
+  block_device_mappings {
+    device_name = "/dev/xvda"
+    ebs {
+      volume_size           = var.eks_node_volume_size
+      volume_type           = "gp2"
+      delete_on_termination = true
+    }
+  }
 }
 data "cloudinit_config" "cloudinit" {
   gzip          = false

@@ -58,7 +58,7 @@ resource "aws_fsx_ontap_file_system" "eksfs" {
   preferred_subnet_id = aws_subnet.eks_private[0].id
   security_group_ids  = [aws_security_group.fsxn_sg.id]
   fsx_admin_password  = random_string.fsx_password.result
-  route_table_ids     = [aws_vpc.eks_vpc.default_route_table_id]
+  route_table_ids     = [aws_vpc.eks_vpc.default_route_table_id,aws_route_table.eks_public_rt.id]
   dynamic disk_iops_configuration {
     for_each = var.fsxn_disk_iops_mode == "USER_PROVISIONED" ? [1] : []
     content {

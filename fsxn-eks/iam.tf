@@ -193,7 +193,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEFSCSIDriverRoleAttachment" {
 
 # Data source for IAM Policy
 data "http" "iam_policy" {
-  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.6.1/docs/install/iam_policy.json"
+  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.11.0/docs/install/iam_policy.json"
 
   request_headers = {
     Accept = "application/json"

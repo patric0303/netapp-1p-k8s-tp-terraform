@@ -28,8 +28,8 @@ set -e
 if [[ $NS_EXISTS -eq 0 ]]; then
         echo "    --> Trident protect namespace already exists, skipping installation"
 else
-        echo "--> Sleeping for 5 mins for aws-load-balancer-controller to start up"
-        sleep 300 # wait for aws-load-balancer-controller to start up before installing Trident protect
+        echo "--> Sleeping for 10 mins for aws-load-balancer-controller to start up"
+        sleep 600 # wait for aws-load-balancer-controller to start up before installing Trident protect
         echo "--> installing Trident protect"
 	install_trident_protect
         echo "--> sleeping for 1 minute for Trident protect pods to start up"

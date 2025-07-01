@@ -5,7 +5,7 @@ availability_zones_count = 2
 creator_tag              = "patricu"
 
 # Trident protect Settings
-aws_trident_protect_version = "100.2410.1"
+aws_trident_protect_version = "100.2506.0"
 
 # VPC Settings
 eks_vpc_cidr             = "10.30.0.0/16"

@@ -14,12 +14,12 @@ gke_ip_range_services = "172.17.0.0/16"
 gke_ip_range_pods     = "172.18.0.0/16"
 
 # GKE Cluster Settings
-gke_kubernetes_version = "1.32.3-gke.1927009"
-gke_trident_version    = "25.02.1"
+gke_kubernetes_version = "1.32.2-gke.1297002"
+gke_trident_version    = "25.06.0"
 gke_private_cluster    = true
 
 # Trident protect Settings
-gke_trident_protect_version = "100.2502.0"
+gke_trident_protect_version = "100.2506.0"
 
 # Node Pool Settings
 gke_machine_type       = "e2-medium"

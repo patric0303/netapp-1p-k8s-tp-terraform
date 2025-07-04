@@ -94,6 +94,9 @@ resource "terraform_data" "trident-protect-install" {
     command = "/bin/bash ./scripts/trident_protect_setup.sh"
     environment = {
       gke_cluster_name              = module.gke.name
+      gke_name                      = module.gke.name
+      gke_zone                      = var.gcp_zones[0]
+      gcp_project                   = var.gcp_project
       gke_trident_protect_version   = var.gke_trident_protect_version
     }
   }

@@ -4,13 +4,19 @@ set -euo pipefail
 
 install_trident_protect() {
         echo "    --> adding Trident protect Helm repository"
-	      helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
-        # echo "    --> installing Trident protect CRDs via Helm"
+	helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
+        #  echo "    --> installing Trident protect CRDs via Helm"
         # Not needed anymore in v25.06
         # helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version ${gke_trident_protect_version} --create-namespace --namespace trident-protect
         echo "    --> installing Trident protect via Helm"
-	      helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=${gke_cluster_name} --version ${gke_trident_protect_version} --create-namespace --namespace trident-protect
+	helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=${gke_cluster_name} --version ${gke_trident_protect_version} --create-namespace --namespace trident-protect
 }
+
+##################
+# Get Kubeconfig #
+##################
+echo "--> getting cluster kubeconfig via gcloud"
+gcloud container clusters get-credentials ${gke_name} --region ${gke_zone} --project ${gcp_project}
 
 ###########################
 # Install Trident protect #

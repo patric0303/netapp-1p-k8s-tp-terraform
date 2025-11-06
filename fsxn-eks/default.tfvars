@@ -5,7 +5,7 @@ availability_zones_count = 2
 creator_tag              = "patricu"
 
 # Trident protect Settings
-aws_trident_protect_version = "100.2506.0"
+aws_trident_protect_version = "100.2510.0"
 
 # VPC Settings
 eks_vpc_cidr             = "10.30.0.0/16"
@@ -13,7 +13,7 @@ eks_public_subnet_cidrs  = ["10.30.0.0/24",  "10.30.1.0/24"]  # len must equal a
 eks_private_subnet_cidrs = ["10.30.10.0/24", "10.30.11.0/24"] # len must equal availability_zones_count
 
 # EKS Settings
-eks_kubernetes_version = "1.29"
+eks_kubernetes_version = "1.32"
 eks_node_count         = 2
 eks_node_min           = 2
 eks_node_max           = 5
@@ -26,7 +26,7 @@ eks_addons             = [
   },
   {
     name    = "netapp_trident-operator"
-    version = "v24.2.0-eksbuild.1"
+    version = "v25.2.1-eksbuild.1"
   }
 ]
 

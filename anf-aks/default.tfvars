@@ -1,5 +1,5 @@
 # Azure Settings
-sp_creds   = "~/.azure/sp-accustomerdemo-v6.json"
+sp_creds   = "<PATH_TO_SERVICE_PRINCIPAL_JSON>"
 azr_region = "westeurope"
 creator_tag = "patricu"
 
@@ -13,9 +13,9 @@ aks_services_dns_ip = "172.16.0.10"   # must be w/in services
 aks_pods_cidr       = "172.18.0.0/16" # must not be w/in vnet
 
 # AKS Cluster Settings
-aks_kubernetes_version       = "1.30.7"
-aks_trident_version          = "24.10.0"
-aks_trident_protect_version  = "100.2410.1"
+aks_kubernetes_version       = "1.32.7"
+aks_trident_version          = "25.10.0"
+aks_trident_protect_version  = "100.2510.0"
 azure_storage_account           = "<STORAGEACCOUNT>"
 azure_storage_account_key       = "<STORAGEACCESSKEY>"
 azure_storage_account_container = "<CONTAINER>"
